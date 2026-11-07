@@ -8,6 +8,11 @@ DATABASE = Path(__file__).with_name("points.db")
 app = Flask(__name__)
 
 
+@app.after_request
+def apply_csp(response):
+    response.headers["Content-Security-Policy"] = "script-src 'self'"
+    return response
+
 def get_db():
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
@@ -41,7 +46,7 @@ def students():
         finally:
             conn.close()
 
-    return render_template("students.html", students=rows, error=error)
+    return render_template("students.html.j2", students=rows, error=error)
 
 
 if __name__ == "__main__":
