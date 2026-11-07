@@ -1,0 +1,16 @@
+# Віртуальне середовище
+.venv/
+venv/
+
+# Кеш Python
+__pycache__/
+*.py[cod]
+
+# Локальна база даних
+points.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# macOS
+.DS_Store

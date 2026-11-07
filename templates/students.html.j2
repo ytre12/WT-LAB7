@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Студенти</title>
+  </head>
+  <body>
+    <h1>Студенти</h1>
+
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ім'я</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in students %}
+        <tr>
+          <td>{{ s.id }}</td>
+          <td>{{ s.name }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="2">Даних немає</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <p><a href="{{ url_for('index') }}">На головну</a></p>
+  </body>
+</html>
